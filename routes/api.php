@@ -16,10 +16,13 @@ use App\Http\Controllers\ApiController;
 use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\ServicesController;
 
-Route::post('login', [ApiController::class, 'authenticate']);
-Route::post('register', [ApiController::class, 'register']);
+Route::group(['prefix' => 'api/v1', 'namespace' => 'Api\v1'], function () {
+    Route::post('login', [ApiController::class, 'authenticate']);
+    Route::post('register', [ApiController::class, 'register']);
 
-Route::group(['middleware' => ['jwt.verify']], function() {
+});
+
+Route::group(['middleware' => ['jwt.verify'], 'prefix' => 'api/v1', 'namespace' => 'Api\v1'], function() {
     Route::get('logout', [ApiController::class, 'logout']);
     Route::get('get_customer', [ApiController::class, 'get_customer']);
     Route::get('services', [ServicesController::class, 'index']);

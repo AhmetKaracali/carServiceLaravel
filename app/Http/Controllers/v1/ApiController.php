@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\v1;
 
 use Tymon\JWTAuth\JWTAuth;
 use App\Models\Customers;

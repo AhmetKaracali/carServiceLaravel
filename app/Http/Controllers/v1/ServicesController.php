@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\v1;
 
 use App\Http\Requests\StoreservicesRequest;
 use App\Http\Requests\UpdateservicesRequest;
 use App\Models\services;
 use Symfony\Component\HttpFoundation\Response;
+use App\Http\Controllers\Controller;
 
 class ServicesController extends Controller
 {

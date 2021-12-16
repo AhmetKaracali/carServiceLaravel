@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\v1;
 
 use App\Http\Requests\StoreautomobilesRequest;
 use App\Http\Requests\UpdateautomobilesRequest;
 use App\Models\automobiles;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Http;
+use App\Http\Controllers\Controller;
 
 class AutomobilesController extends Controller
 {
