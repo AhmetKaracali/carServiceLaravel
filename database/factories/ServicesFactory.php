@@ -14,7 +14,10 @@ class ServicesFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => $this->faker->sentence(),
+            'details' => "details",
+            'duration' => $this->faker->numberBetween(0,16255),
+            'price' => $this->faker->numberBetween(1000,5000)
         ];
     }
 }

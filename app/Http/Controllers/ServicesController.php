@@ -5,17 +5,27 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreservicesRequest;
 use App\Http\Requests\UpdateservicesRequest;
 use App\Models\services;
+use Symfony\Component\HttpFoundation\Response;
 
 class ServicesController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        //
+        $services= services::all()->get();
+
+        if(!$services)
+        {
+            return response()->json([
+                'success' => false,
+                'message' => 'Sorry, order not found.'
+            ], 400);
+        }
+        return response()->json([
+            'success' => true,
+            'message' => 'Success.',
+            'data' => $services->toJson()
+        ], Response::HTTP_OK);
     }
 
     /**
@@ -43,11 +53,22 @@ class ServicesController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\services  $services
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function show(services $services)
     {
-        //
+        if(!$services)
+        {
+            return response()->json([
+                'success' => false,
+                'message' => 'Sorry, service not found.'
+            ], 400);
+        }
+        return response()->json([
+            'success' => true,
+            'message' => 'Success.',
+            'data' => $services->toJson()
+        ], Response::HTTP_OK);
     }
 
     /**
